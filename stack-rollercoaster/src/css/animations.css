@@ -1,0 +1,57 @@
+@keyframes pushAnimation {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    50% {
+        transform: translateY(-10%);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes popAnimation {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-10%);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+}
+
+@keyframes errorAnimation {
+    0% {
+        background-color: red;
+    }
+    50% {
+        background-color: transparent;
+    }
+    100% {
+        background-color: red;
+    }
+}
+
+.car {
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+.push {
+    animation-name: pushAnimation;
+}
+
+.pop {
+    animation-name: popAnimation;
+}
+
+.error {
+    animation-name: errorAnimation;
+}

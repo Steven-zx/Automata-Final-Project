@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stack Coaster</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="scene">
+    <!-- Rollercoaster Track Frame -->
+    <div class="track-frame">
+      <svg class="track-svg" viewBox="0 0 1400 900" preserveAspectRatio="none">
+        <path class="track-rail" d="M 50,150 Q 200,50 400,150 L 600,300 Q 800,400 1000,300 L 1200,150 Q 1300,80 1350,150" />
+      </svg>
+    </div>
+
+    <!-- Title Banner -->
+    <div class="title-banner">
+      <div class="banner-bg"></div>
+      <h1 class="main-title">STACK COASTER!</h1>
+      <div class="banner-icon">🎢</div>
+    </div>
+
+    <!-- Park Scene -->
+    <div class="park-scene">
+      <!-- Entry Gate (Left) -->
+      <div class="entry-section">
+        <div class="entry-booth">
+          <div class="booth-ornament"></div>
+          <div class="booth-sign">ENTRY GATE</div>
+          <div id="queueArea" class="queue-line"></div>
+        </div>
+      </div>
+
+      <!-- Center Tower with Stack -->
+      <div class="center-section">
+        <div class="tower-base">
+          <div id="stackContainer" class="stack-area"></div>
+          <div class="platform-disc"></div>
+        </div>
+      </div>
+
+      <!-- Exit Ramp (Right) -->
+      <div class="exit-section">
+        <div class="exit-track"></div>
+        <div class="exit-sign">EXIT RAMP</div>
+        <div id="exitArea" class="exit-zone">
+          <div class="exit-passenger">👋</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Control Panel (Bottom) -->
+    <div class="control-panel">
+      <button id="addBtn" class="panel-btn add-button">
+        <div class="btn-circle plus-circle">
+          <span class="btn-symbol">+</span>
+        </div>
+        <div class="btn-label">Add Passenger<br/><span class="btn-key">(a)</span></div>
+      </button>
+
+      <div class="status-display">
+        <div class="display-top">
+          <div id="statusText" class="status-main">RIDE OPEN!</div>
+          <div id="statusSub" class="status-subtitle">AWAITING NEW PASSENGERS:</div>
+        </div>
+        <div class="display-bottom">
+          <div class="passenger-dots">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          </div>
+          <div class="capacity-display">
+            <span class="cap-label">CAPACITY:</span>
+            <span id="count" class="cap-count">0</span><span class="cap-total">/5</span>
+          </div>
+          <div class="capacity-meter">
+            <div id="capacityBar" class="meter-fill"></div>
+          </div>
+        </div>
+      </div>
+
+      <button id="removeBtn" class="panel-btn remove-button">
+        <div class="btn-circle minus-circle">
+          <span class="btn-symbol">−</span>
+        </div>
+        <div class="btn-label">Remove Passenger<br/><span class="btn-key">(b)</span></div>
+      </button>
+    </div>
+
+    <!-- Background Park Elements -->
+    <div class="park-bg">
+      <div class="ferris-wheel"></div>
+      <div class="cloud cloud1"></div>
+      <div class="cloud cloud2"></div>
+      <div class="cloud cloud3"></div>
+    </div>
+  </div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
