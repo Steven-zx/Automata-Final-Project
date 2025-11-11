@@ -22,6 +22,7 @@ let pdaStepLog = [];
 let isGuidedMode = false;
 let currentStepIndex = 0;
 let currentInputIndex = 0; // Track position in input string
+let initialized = false; // Track if event listeners are set up
 
 function randomColor() { return colors[Math.floor(Math.random() * colors.length)]; }
 function randomFace() { return faces[Math.floor(Math.random() * faces.length)]; }
@@ -48,32 +49,39 @@ function initMainScene() {
   resultMessage = document.getElementById('resultMessage');
   tryAgainBtn = document.getElementById('tryAgainBtn');
   
-  // Set up event listeners
-  addBtn.addEventListener('click', addPassenger);
-  removeBtn.addEventListener('click', removePassenger);
-  guidedBtn.addEventListener('click', startGuidedMode);
-  resetBtn.addEventListener('click', resetRide);
-  closePdaPanel.addEventListener('click', () => pdaPanel.classList.remove('active'));
-  tryAgainBtn.addEventListener('click', () => {
-    resultModal.classList.remove('show');
-    goBackToInput();
-  });
-  
-  sequenceDisplay.addEventListener('dblclick', () => {
-    if (!isGuidedMode) {
-      sequence = [];
-      updateSequenceDisplay();
-      ding();
-    }
-  });
-  
-  document.addEventListener('keydown', e => {
-    // In guided mode, allow a/b keys to work
-    if (e.key.toLowerCase() === 'a') { e.preventDefault(); addPassenger(); }
-    if (e.key.toLowerCase() === 'b') { e.preventDefault(); removePassenger(); }
-    if (e.key.toLowerCase() === 'c' && !isGuidedMode) { e.preventDefault(); sequence = []; updateSequenceDisplay(); ding(); }
-    if (e.key.toLowerCase() === 'r' && !isGuidedMode) { e.preventDefault(); resetRide(); }
-  });
+  // Only set up event listeners once
+  if (!initialized) {
+    // Set up event listeners
+    addBtn.addEventListener('click', addPassenger);
+    removeBtn.addEventListener('click', removePassenger);
+    guidedBtn.addEventListener('click', startGuidedMode);
+    resetBtn.addEventListener('click', resetRide);
+    closePdaPanel.addEventListener('click', () => pdaPanel.classList.remove('active'));
+    tryAgainBtn.addEventListener('click', () => {
+      resultModal.classList.remove('show');
+      goBackToInput();
+    });
+    
+    sequenceDisplay.addEventListener('dblclick', () => {
+      if (!isGuidedMode) {
+        sequence = [];
+        updateSequenceDisplay();
+        ding();
+      }
+    });
+    
+    document.addEventListener('keydown', e => {
+      // Only respond to keys when scene is visible
+      if (scene && scene.style.display !== 'none') {
+        if (e.key.toLowerCase() === 'a') { e.preventDefault(); addPassenger(); }
+        if (e.key.toLowerCase() === 'b') { e.preventDefault(); removePassenger(); }
+        if (e.key.toLowerCase() === 'c' && !isGuidedMode) { e.preventDefault(); sequence = []; updateSequenceDisplay(); ding(); }
+        if (e.key.toLowerCase() === 'r' && !isGuidedMode) { e.preventDefault(); resetRide(); }
+      }
+    });
+    
+    initialized = true;
+  }
   
   updateUI();
 }
@@ -216,7 +224,7 @@ async function addPassenger() {
 }
 
 async function removePassenger() {
-  if (busy || stack.isEmpty()) {
+  if (busy) {
     error();
     return;
   }
@@ -230,6 +238,31 @@ async function removePassenger() {
     if (inputString[currentInputIndex] !== 'b') {
       error();
       statusText.textContent = `❌ Wrong key! Expected '${inputString[currentInputIndex]}'`;
+      return;
+    }
+    
+    // Check if stack is empty - this means trying to pop more than we pushed
+    if (stack.isEmpty()) {
+      error();
+      const stepNum = currentInputIndex + 1;
+      logPDAStep(stepNum, 'qᵣ', inputString.substring(currentInputIndex), 'Z₀', '❌ REJECT - Cannot pop from empty stack');
+      statusText.textContent = '❌ REJECTED!';
+      statusSub.textContent = 'Cannot pop from empty stack!';
+      currentStepIndex++;
+      renderPDASteps();
+      
+      // End guided mode and show result
+      isGuidedMode = false;
+      guidedBtn.disabled = false;
+      setTimeout(() => {
+        showResultModal(false);
+      }, 800);
+      return;
+    }
+  } else {
+    // Manual mode - just check if empty
+    if (stack.isEmpty()) {
+      error();
       return;
     }
   }
@@ -363,14 +396,23 @@ function showResultModal(accepted) {
     resultIcon.textContent = '✅';
     resultText.textContent = 'ACCEPTED!';
     resultText.className = 'result-text accepted';
-    resultMessage.textContent = 'Your input string is valid! The stack is empty.';
+    resultMessage.textContent = `Your input string is valid! Equal number of a's and b's. Stack is empty.`;
     content.className = 'result-content accepted';
     success(); // Play success sound
   } else {
     resultIcon.textContent = '❌';
     resultText.textContent = 'REJECTED!';
     resultText.className = 'result-text rejected';
-    resultMessage.textContent = 'Invalid input! The stack is not empty.';
+    
+    // Determine rejection reason
+    if (stack.isEmpty() && currentInputIndex < inputString.length) {
+      resultMessage.textContent = `Invalid! Tried to pop more b's than a's were pushed.`;
+    } else if (!stack.isEmpty()) {
+      resultMessage.textContent = `Invalid! More a's than b's. Stack is not empty.`;
+    } else {
+      resultMessage.textContent = `Invalid input string. Number of a's must equal number of b's.`;
+    }
+    
     content.className = 'result-content rejected';
     reject(); // Play reject sound
   }

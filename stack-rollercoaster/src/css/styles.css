@@ -12,7 +12,22 @@ html, body {
 }
 
 body {
-  background: linear-gradient(180deg, #4a90e2 0%, #87CEEB 40%, #ffd89b 100%);
+  background: url('../assets/backgrounds/image.jpg') center/cover no-repeat fixed;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(180deg, 
+    rgba(75, 0, 130, 0.3) 0%,
+    rgba(138, 43, 226, 0.2) 30%,
+    rgba(255, 20, 147, 0.15) 60%,
+    rgba(255, 105, 180, 0.1) 100%
+  );
+  z-index: 0;
+  pointer-events: none;
 }
 
 .scene {
@@ -22,6 +37,7 @@ body {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  z-index: 1;
 }
 
 /* Rollercoaster Track Frame */
@@ -102,60 +118,108 @@ body {
   z-index: 5;
 }
 
-/* Entry Gate (Orange Ornate Booth) */
+/* Entry Gate - Carnival Arch */
 .entry-section {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  height: 100%;
+  justify-content: flex-end;
 }
 
 .entry-booth {
   width: 200px;
-  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
-  border: 6px solid #fbbf24;
-  border-radius: 20px 20px 30px 30px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.35);
-  padding: 15px;
+  height: 140px;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
+/* Entry arch background */
 .booth-ornament {
   position: absolute;
-  top: -20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 140px;
-  height: 35px;
-  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
-  border-radius: 35px 35px 0 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
   border: 5px solid #fbbf24;
-  box-shadow: 0 -3px 10px rgba(0,0,0,0.25);
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.4),
+              inset 0 -15px 25px rgba(0,0,0,0.2);
+}
+
+/* Decorative lights stripe */
+.booth-ornament::before {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  height: 20px;
+  background: repeating-linear-gradient(90deg, 
+    #fbbf24 0px, #fbbf24 15px, 
+    transparent 15px, transparent 30px
+  );
+  border-radius: 10px;
 }
 
 .booth-sign {
-  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
-  color: #fbbf24;
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.95);
+  color: #dc2626;
   font-family: 'Fredoka One', cursive;
   font-size: 16px;
-  padding: 8px 20px;
-  border-radius: 12px;
-  border: 4px solid white;
+  padding: 6px 18px;
+  border-radius: 8px;
+  border: 3px solid #fbbf24;
   text-align: center;
-  box-shadow: 0 4px 0 rgba(0,0,0,0.3);
-  margin-bottom: 12px;
-  text-shadow: 1px 1px 0 rgba(0,0,0,0.4);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+  text-shadow: 1px 1px 0 rgba(220,38,38,0.2);
+  z-index: 2;
+  white-space: nowrap;
+}
+
+/* Entry pillars */
+.entry-booth::before,
+.entry-booth::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 25px;
+  height: 100px;
+  background: linear-gradient(180deg, #b91c1c 0%, #7f1d1d 100%);
+  border: 4px solid #fbbf24;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4),
+              inset 0 -10px 15px rgba(0,0,0,0.3);
+}
+
+.entry-booth::before {
+  left: 5px;
+}
+
+.entry-booth::after {
+  right: 5px;
 }
 
 .queue-line {
-  min-height: 80px;
+  min-height: 70px;
+  width: 100%;
   display: flex;
-  gap: 10px;
+  gap: 8px;
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-end;
-  padding: 10px;
-  background: rgba(255,255,255,0.2);
-  border-radius: 12px;
+  padding: 8px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 10px;
+  border: 2px solid rgba(251, 191, 36, 0.3);
 }
 
 /* Center Tower */
@@ -249,59 +313,122 @@ body {
   100% { transform: translateY(-600px) translateX(600px) scale(0.3) rotate(45deg); opacity: 0; }
 }
 
-/* Exit Ramp */
+/* Exit Arch - Carnival Style */
 .exit-section {
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
+  height: 100%;
+  justify-content: flex-end;
 }
 
 .exit-track {
-  width: 180px;
-  height: 150px;
-  border: 8px solid #2c3e50;
-  border-top: none;
-  border-radius: 0 0 90px 90px;
-  background: linear-gradient(180deg, transparent, rgba(44,62,80,0.1));
+  width: 200px;
+  height: 140px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-bottom: 10px;
 }
 
+/* Exit arch background */
+.exit-track::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  border: 5px solid #fbbf24;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.4),
+              inset 0 -15px 25px rgba(0,0,0,0.2);
+  z-index: 0;
+}
+
+/* Decorative lights on arch */
+.exit-track::after {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  height: 20px;
+  background: repeating-linear-gradient(90deg, 
+    #fbbf24 0px, #fbbf24 15px, 
+    transparent 15px, transparent 30px
+  );
+  border-radius: 10px;
+  z-index: 1;
+}
+
 .exit-sign {
-  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
-  color: white;
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.95);
+  color: #059669;
   font-family: 'Fredoka One', cursive;
-  font-size: 15px;
-  padding: 8px 25px;
-  border-radius: 12px;
-  border: 4px solid #fbbf24;
+  font-size: 16px;
+  padding: 6px 18px;
+  border-radius: 8px;
+  border: 3px solid #fbbf24;
   text-align: center;
-  box-shadow: 0 4px 0 rgba(0,0,0,0.3);
-  margin-bottom: 10px;
-  text-shadow: 1px 1px 0 rgba(0,0,0,0.4);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+  text-shadow: 1px 1px 0 rgba(5,150,105,0.2);
+  z-index: 2;
+  white-space: nowrap;
+}
+
+/* Exit pillars */
+.exit-track > div::before,
+.exit-track > div::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 25px;
+  height: 100px;
+  background: linear-gradient(180deg, #059669 0%, #047857 100%);
+  border: 4px solid #fbbf24;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4),
+              inset 0 -10px 15px rgba(0,0,0,0.3);
+}
+
+.exit-track > div::before {
+  left: -95px;
+}
+
+.exit-track > div::after {
+  right: -95px;
 }
 
 .exit-zone {
   width: 200px;
-  min-height: 110px;
-  background: linear-gradient(135deg, #86efac 0%, #4ade80 100%);
-  border: 6px solid #16a34a;
-  border-radius: 15px;
+  min-height: 70px;
+  background: rgba(16, 185, 129, 0.15);
+  border: 2px solid rgba(251, 191, 36, 0.3);
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  font-family: 'Fredoka One', cursive;
+  font-size: 13px;
+  color: #059669;
+  text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+  position: relative;
+}
+
+.exit-zone::before {
+  content: 'EXIT';
 }
 
 .exit-passenger {
-  font-size: 48px;
-  animation: wave 1.5s ease-in-out infinite;
-}
-
-@keyframes wave {
-  0%, 100% { transform: rotate(0); }
-  25% { transform: rotate(20deg); }
-  75% { transform: rotate(-20deg); }
+  display: none;
 }
 
 /* Control Panel (Top Left) */
@@ -618,12 +745,24 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  background: url('../assets/backgrounds/image.jpg') center/cover no-repeat fixed;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 9999;
   animation: fadeIn 0.5s ease;
+}
+
+.input-screen::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, 
+    rgba(102, 126, 234, 0.75) 0%, 
+    rgba(118, 75, 162, 0.7) 50%, 
+    rgba(240, 147, 251, 0.65) 100%
+  );
+  z-index: -1;
 }
 
 .input-container {
