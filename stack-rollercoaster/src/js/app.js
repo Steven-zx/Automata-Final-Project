@@ -7,31 +7,42 @@ const addBtn = document.getElementById('addBtn');
 const removeBtn = document.getElementById('removeBtn');
 const stackArea = document.getElementById('stackContainer');
 const count = document.getElementById('count');
-const capacityBar = document.getElementById('capacityBar');
+const sequenceDisplay = document.getElementById('sequenceDisplay');
 
 const stack = new Stack(5);
 const colors = ['car-red', 'car-blue', 'car-green', 'car-yellow', 'car-orange'];
 const faces = ['😀', '😃', '😄', '😁', '🤠', '😎', '🤗', '🥳', '🧒', '👧'];
 let busy = false;
+let sequence = []; // Track the PDA sequence
+
+function updateSequenceDisplay() {
+  if (sequence.length === 0) {
+    sequenceDisplay.innerHTML = '<span class="sequence-label">PLEASE WAIT</span>';
+  } else {
+    sequenceDisplay.innerHTML = sequence.map((symbol, index) => 
+      `<span class="sequence-symbol symbol-${symbol}" style="animation-delay: ${index * 0.05}s">${symbol}</span>`
+    ).join('');
+  }
+}
 
 function updateUI() {
   const n = stack.size();
   count.textContent = n;
-  capacityBar.style.width = `${(n / stack.capacity) * 100}%`;
+  updateSequenceDisplay();
   
   if (stack.isEmpty()) {
     statusText.textContent = 'RIDE OPEN!';
-    statusSub.textContent = 'AWAITING NEW PASSENGERS';
+    statusSub.textContent = 'PDA SEQUENCE:';
     addBtn.disabled = false;
     removeBtn.disabled = true;
   } else if (n >= stack.capacity) {
     statusText.textContent = 'RIDE FULL!';
-    statusSub.textContent = 'PLEASE WAIT';
+    statusSub.textContent = 'PDA SEQUENCE:';
     addBtn.disabled = true;
     removeBtn.disabled = false;
   } else {
     statusText.textContent = 'BOARDING!';
-    statusSub.textContent = `${stack.capacity - n} SEATS AVAILABLE`;
+    statusSub.textContent = 'PDA SEQUENCE:';
     addBtn.disabled = false;
     removeBtn.disabled = false;
   }
@@ -45,6 +56,10 @@ async function addPassenger() {
   busy = true;
   addBtn.disabled = true;
   removeBtn.disabled = true;
+
+  // Add 'a' to sequence
+  sequence.push('a');
+  updateSequenceDisplay();
 
   const car = document.createElement('div');
   car.className = `car ${randomColor()}`;
@@ -67,7 +82,11 @@ async function removePassenger() {
   addBtn.disabled = true;
   removeBtn.disabled = true;
   statusText.textContent = 'EXITING!';
-  statusSub.textContent = 'PASSENGER DISEMBARKING';
+  statusSub.textContent = 'PDA SEQUENCE:';
+
+  // Add 'b' to sequence
+  sequence.push('b');
+  updateSequenceDisplay();
 
   const cars = [...stackArea.querySelectorAll('.car')];
   const top = cars[cars.length - 1];
@@ -88,9 +107,18 @@ function wait(ms) { return new Promise(r => setTimeout(r, ms)); }
 
 addBtn.addEventListener('click', addPassenger);
 removeBtn.addEventListener('click', removePassenger);
+
+// Double-click sequence display to clear it
+sequenceDisplay.addEventListener('dblclick', () => {
+  sequence = [];
+  updateSequenceDisplay();
+  ding();
+});
+
 document.addEventListener('keydown', e => {
   if (e.key.toLowerCase() === 'a') { e.preventDefault(); addPassenger(); }
   if (e.key.toLowerCase() === 'b') { e.preventDefault(); removePassenger(); }
+  if (e.key.toLowerCase() === 'c') { e.preventDefault(); sequence = []; updateSequenceDisplay(); ding(); }
 });
 
 updateUI();
