@@ -51,51 +51,51 @@ body {
 /* Title Banner with Purple Gradient */
 .title-banner {
   position: relative;
-  margin: 30px auto 20px;
+  margin: 15px auto 10px;
   z-index: 10;
 }
 
 .banner-bg {
   position: absolute;
-  inset: -15px;
+  inset: -10px;
   background: linear-gradient(135deg, #6b46c1 0%, #9333ea 50%, #c026d3 100%);
-  border-radius: 40px;
-  border: 8px solid #fbbf24;
-  box-shadow: 0 0 0 4px white, 0 12px 30px rgba(0,0,0,0.4);
+  border-radius: 25px;
+  border: 5px solid #fbbf24;
+  box-shadow: 0 0 0 3px white, 0 8px 20px rgba(0,0,0,0.4);
   z-index: -1;
 }
 
 .main-title {
   font-family: 'Fredoka One', cursive;
-  font-size: 64px;
+  font-size: 42px;
   color: #fbbf24;
   text-shadow: 
-    4px 4px 0 #7c3aed,
-    -2px -2px 0 white,
-    6px 6px 0 rgba(0,0,0,0.3);
-  letter-spacing: 4px;
-  padding: 20px 80px;
+    3px 3px 0 #7c3aed,
+    -1px -1px 0 white,
+    4px 4px 0 rgba(0,0,0,0.3);
+  letter-spacing: 3px;
+  padding: 12px 50px;
   position: relative;
 }
 
 .banner-icon {
   position: absolute;
-  top: -35px;
+  top: -25px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 48px;
-  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+  font-size: 36px;
+  filter: drop-shadow(0 3px 6px rgba(0,0,0,0.3));
 }
 
 /* Park Scene Layout */
 .park-scene {
   flex: 1;
   display: grid;
-  grid-template-columns: 280px 1fr 280px;
-  gap: 30px;
-  padding: 10px 40px 40px;
+  grid-template-columns: 200px 1fr 200px;
+  gap: 20px;
+  padding: 5px 30px 30px;
   align-items: flex-end;
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
   width: 100%;
   position: relative;
@@ -110,52 +110,52 @@ body {
 }
 
 .entry-booth {
-  width: 300px;
+  width: 200px;
   background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
-  border: 10px solid #fbbf24;
-  border-radius: 25px 25px 40px 40px;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.35);
-  padding: 25px;
+  border: 6px solid #fbbf24;
+  border-radius: 20px 20px 30px 30px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+  padding: 15px;
   position: relative;
 }
 
 .booth-ornament {
   position: absolute;
-  top: -30px;
+  top: -20px;
   left: 50%;
   transform: translateX(-50%);
-  width: 200px;
-  height: 50px;
+  width: 140px;
+  height: 35px;
   background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
-  border-radius: 50px 50px 0 0;
-  border: 8px solid #fbbf24;
-  box-shadow: 0 -5px 15px rgba(0,0,0,0.25);
+  border-radius: 35px 35px 0 0;
+  border: 5px solid #fbbf24;
+  box-shadow: 0 -3px 10px rgba(0,0,0,0.25);
 }
 
 .booth-sign {
   background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
   color: #fbbf24;
   font-family: 'Fredoka One', cursive;
-  font-size: 22px;
-  padding: 12px 30px;
-  border-radius: 15px;
-  border: 6px solid white;
+  font-size: 16px;
+  padding: 8px 20px;
+  border-radius: 12px;
+  border: 4px solid white;
   text-align: center;
-  box-shadow: 0 6px 0 rgba(0,0,0,0.3);
-  margin-bottom: 20px;
-  text-shadow: 2px 2px 0 rgba(0,0,0,0.4);
+  box-shadow: 0 4px 0 rgba(0,0,0,0.3);
+  margin-bottom: 12px;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.4);
 }
 
 .queue-line {
-  min-height: 100px;
+  min-height: 80px;
   display: flex;
-  gap: 15px;
+  gap: 10px;
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-end;
-  padding: 15px;
+  padding: 10px;
   background: rgba(255,255,255,0.2);
-  border-radius: 15px;
+  border-radius: 12px;
 }
 
 /* Center Tower */
@@ -173,54 +173,54 @@ body {
 }
 
 .stack-area {
-  width: 240px;
-  min-height: 500px;
+  width: 180px;
+  min-height: 380px;
   display: flex;
   flex-direction: column-reverse;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 15px;
+  gap: 6px;
+  margin-bottom: 12px;
 }
 
 .platform-disc {
-  width: 320px;
-  height: 50px;
+  width: 240px;
+  height: 35px;
   background: linear-gradient(135deg, #64748b 0%, #475569 100%);
   border-radius: 50%;
   box-shadow: 
-    0 15px 0 rgba(0,0,0,0.4),
-    inset 0 10px 20px rgba(0,0,0,0.3);
-  border: 8px solid #334155;
+    0 10px 0 rgba(0,0,0,0.4),
+    inset 0 8px 15px rgba(0,0,0,0.3);
+  border: 5px solid #334155;
 }
 
 /* Car Styling */
 .car {
-  width: 200px;
-  height: 90px;
-  border-radius: 18px;
-  border: 8px solid;
+  width: 150px;
+  height: 65px;
+  border-radius: 14px;
+  border: 5px solid;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  padding: 10px 25px;
+  padding: 8px 18px;
   box-shadow: 
-    0 10px 0 rgba(0,0,0,0.4),
-    inset 0 -6px 0 rgba(255,255,255,0.3),
-    inset 0 6px 0 rgba(0,0,0,0.2);
+    0 7px 0 rgba(0,0,0,0.4),
+    inset 0 -4px 0 rgba(255,255,255,0.3),
+    inset 0 4px 0 rgba(0,0,0,0.2);
   position: relative;
 }
 
 .car::after {
   content: '';
   position: absolute;
-  bottom: -20px;
-  left: 25px;
-  width: 35px;
-  height: 35px;
+  bottom: -14px;
+  left: 18px;
+  width: 25px;
+  height: 25px;
   background: #1f2937;
   border-radius: 50%;
-  border: 5px solid #374151;
-  box-shadow: 80px 0 0 0 #1f2937, 80px 0 0 5px #374151;
+  border: 3px solid #374151;
+  box-shadow: 60px 0 0 0 #1f2937, 60px 0 0 3px #374151;
 }
 
 .car-red { background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); border-color: #991b1b; }
@@ -230,13 +230,13 @@ body {
 .car-orange { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); border-color: #7c2d12; }
 
 .passenger {
-  font-size: 48px;
+  font-size: 36px;
   animation: bob 1.2s ease-in-out infinite;
 }
 
 @keyframes bob {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+  50% { transform: translateY(-6px); }
 }
 
 .car.exit-anim {
@@ -258,43 +258,43 @@ body {
 }
 
 .exit-track {
-  width: 250px;
-  height: 200px;
-  border: 12px solid #2c3e50;
+  width: 180px;
+  height: 150px;
+  border: 8px solid #2c3e50;
   border-top: none;
-  border-radius: 0 0 125px 125px;
+  border-radius: 0 0 90px 90px;
   background: linear-gradient(180deg, transparent, rgba(44,62,80,0.1));
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .exit-sign {
   background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
   color: white;
   font-family: 'Fredoka One', cursive;
-  font-size: 20px;
-  padding: 12px 35px;
-  border-radius: 15px;
-  border: 6px solid #fbbf24;
+  font-size: 15px;
+  padding: 8px 25px;
+  border-radius: 12px;
+  border: 4px solid #fbbf24;
   text-align: center;
-  box-shadow: 0 6px 0 rgba(0,0,0,0.3);
-  margin-bottom: 15px;
-  text-shadow: 2px 2px 0 rgba(0,0,0,0.4);
+  box-shadow: 0 4px 0 rgba(0,0,0,0.3);
+  margin-bottom: 10px;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.4);
 }
 
 .exit-zone {
-  width: 280px;
-  min-height: 150px;
+  width: 200px;
+  min-height: 110px;
   background: linear-gradient(135deg, #86efac 0%, #4ade80 100%);
-  border: 10px solid #16a34a;
-  border-radius: 20px;
+  border: 6px solid #16a34a;
+  border-radius: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
 }
 
 .exit-passenger {
-  font-size: 64px;
+  font-size: 48px;
   animation: wave 1.5s ease-in-out infinite;
 }
 
@@ -307,35 +307,35 @@ body {
 /* Control Panel (Top Left) */
 .control-panel {
   position: fixed;
-  top: 20px;
-  left: 20px;
+  top: 15px;
+  left: 15px;
   width: auto;
   background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
-  border: 8px solid #fbbf24;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  border: 5px solid #fbbf24;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  padding: 20px;
+  gap: 10px;
+  padding: 12px;
   z-index: 100;
 }
 
 .panel-btn {
-  width: 280px;
+  width: 200px;
   height: auto;
   background: transparent;
   border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 15px;
-  padding: 12px;
+  gap: 10px;
+  padding: 8px;
   transition: transform 0.15s ease;
 }
 
 .panel-btn:active {
-  transform: translateY(8px);
+  transform: translateY(5px);
 }
 
 .panel-btn:disabled {
@@ -345,14 +345,14 @@ body {
 }
 
 .btn-circle {
-  width: 70px;
-  height: 70px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  border: 6px solid white;
+  border: 4px solid white;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 6px 0 rgba(0,0,0,0.5), inset 0 4px 0 rgba(255,255,255,0.4);
+  box-shadow: 0 4px 0 rgba(0,0,0,0.5), inset 0 3px 0 rgba(255,255,255,0.4);
   flex-shrink: 0;
 }
 
@@ -365,20 +365,20 @@ body {
 }
 
 .btn-symbol {
-  font-size: 36px;
+  font-size: 26px;
   font-weight: 700;
   color: white;
-  text-shadow: 2px 2px 0 rgba(0,0,0,0.4);
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.4);
   line-height: 1;
 }
 
 .btn-label {
   font-family: 'Fredoka One', cursive;
-  font-size: 18px;
+  font-size: 14px;
   color: white;
   text-align: left;
-  line-height: 1.3;
-  text-shadow: 2px 2px 0 rgba(0,0,0,0.5);
+  line-height: 1.2;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
 }
 
 .btn-key {
@@ -389,29 +389,29 @@ body {
 /* Status Display */
 .status-display {
   background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
-  border: 6px solid white;
-  border-radius: 20px;
-  padding: 18px 25px;
+  border: 4px solid white;
+  border-radius: 15px;
+  padding: 12px 18px;
   box-shadow: 
-    0 6px 0 rgba(0,0,0,0.4),
-    inset 0 4px 0 rgba(255,255,255,0.5);
+    0 4px 0 rgba(0,0,0,0.4),
+    inset 0 3px 0 rgba(255,255,255,0.5);
 }
 
 .display-top {
   text-align: center;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .status-main {
   font-family: 'Fredoka One', cursive;
-  font-size: 28px;
+  font-size: 20px;
   color: #dc2626;
   text-shadow: 
-    2px 2px 0 white,
+    1px 1px 0 white,
     -1px -1px 0 white,
-    3px 3px 0 rgba(0,0,0,0.2);
+    2px 2px 0 rgba(0,0,0,0.2);
   animation: pulse 1.5s ease-in-out infinite;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
 @keyframes pulse {
@@ -420,7 +420,7 @@ body {
 }
 
 .status-subtitle {
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 700;
   color: #1f2937;
 }
@@ -428,20 +428,20 @@ body {
 .display-bottom {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 
 /* Sequence Display */
 .sequence-display {
-  min-height: 50px;
+  min-height: 40px;
   background: white;
-  border: 4px solid #dc2626;
-  border-radius: 12px;
-  padding: 10px 15px;
+  border: 3px solid #dc2626;
+  border-radius: 10px;
+  padding: 8px 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 6px;
   flex-wrap: wrap;
   box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
   cursor: pointer;
@@ -456,21 +456,21 @@ body {
 }
 
 .sequence-label {
-  font-size: 14px;
+  font-size: 11px;
   font-weight: 700;
   color: #6b7280;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
 }
 
 .sequence-symbol {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
   font-family: 'Fredoka One', cursive;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 700;
   color: white;
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
@@ -502,16 +502,16 @@ body {
 }
 
 .capacity-display {
-  font-size: 16px;
+  font-size: 13px;
   font-weight: 800;
   color: #1f2937;
   text-align: center;
 }
 
 .cap-count {
-  font-size: 22px;
+  font-size: 18px;
   color: #dc2626;
-  margin: 0 3px;
+  margin: 0 2px;
 }
 
 /* Background Elements */
@@ -628,129 +628,129 @@ body {
 
 .input-container {
   text-align: center;
-  max-width: 600px;
+  max-width: 500px;
   width: 90%;
 }
 
 .input-banner {
   position: relative;
-  margin-bottom: 40px;
+  margin-bottom: 25px;
 }
 
 .input-banner-bg {
   position: absolute;
-  inset: -15px;
+  inset: -10px;
   background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
-  border-radius: 40px;
-  border: 8px solid white;
-  box-shadow: 0 0 0 4px #7c3aed, 0 12px 30px rgba(0,0,0,0.4);
+  border-radius: 25px;
+  border: 5px solid white;
+  box-shadow: 0 0 0 3px #7c3aed, 0 8px 20px rgba(0,0,0,0.4);
   z-index: -1;
   animation: pulse 2s ease-in-out infinite;
 }
 
 .input-title {
   font-family: 'Fredoka One', cursive;
-  font-size: 72px;
+  font-size: 48px;
   color: white;
   text-shadow: 
-    4px 4px 0 #7c3aed,
-    -2px -2px 0 #fbbf24,
-    6px 6px 0 rgba(0,0,0,0.3);
-  letter-spacing: 6px;
-  padding: 25px 60px;
+    3px 3px 0 #7c3aed,
+    -1px -1px 0 #fbbf24,
+    4px 4px 0 rgba(0,0,0,0.3);
+  letter-spacing: 4px;
+  padding: 18px 40px;
 }
 
 .input-icon {
   position: absolute;
-  top: -45px;
+  top: -30px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 64px;
-  filter: drop-shadow(0 8px 12px rgba(0,0,0,0.5));
+  font-size: 42px;
+  filter: drop-shadow(0 6px 8px rgba(0,0,0,0.5));
   animation: bounce 1.5s ease-in-out infinite;
 }
 
 .input-card {
   background: rgba(255, 255, 255, 0.95);
-  border-radius: 30px;
-  padding: 50px 40px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-  border: 6px solid #fbbf24;
+  border-radius: 20px;
+  padding: 35px 30px;
+  box-shadow: 0 15px 45px rgba(0,0,0,0.3);
+  border: 4px solid #fbbf24;
 }
 
 .input-subtitle {
   font-family: 'Fredoka One', cursive;
-  font-size: 36px;
+  font-size: 26px;
   color: #7c3aed;
-  margin-bottom: 15px;
-  text-shadow: 2px 2px 0 rgba(251,191,36,0.3);
+  margin-bottom: 12px;
+  text-shadow: 1px 1px 0 rgba(251,191,36,0.3);
 }
 
 .input-description {
-  font-size: 20px;
+  font-size: 16px;
   color: #4b5563;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   font-weight: 600;
 }
 
 .highlight-a {
   color: #10b981;
   font-weight: 800;
-  font-size: 28px;
+  font-size: 20px;
 }
 
 .highlight-b {
   color: #ef4444;
   font-weight: 800;
-  font-size: 28px;
+  font-size: 20px;
 }
 
 .pda-input {
   width: 100%;
-  padding: 20px 25px;
-  font-size: 32px;
+  padding: 15px 20px;
+  font-size: 24px;
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
   text-align: center;
-  border: 5px solid #7c3aed;
-  border-radius: 20px;
+  border: 4px solid #7c3aed;
+  border-radius: 15px;
   outline: none;
   background: #f3f4f6;
   color: #1f2937;
-  margin-bottom: 25px;
-  letter-spacing: 8px;
+  margin-bottom: 20px;
+  letter-spacing: 6px;
   transition: all 0.3s ease;
 }
 
 .pda-input:focus {
   border-color: #fbbf24;
   background: white;
-  box-shadow: 0 0 0 4px rgba(251,191,36,0.3);
+  box-shadow: 0 0 0 3px rgba(251,191,36,0.3);
   transform: scale(1.02);
 }
 
 .start-button {
   width: 100%;
-  padding: 25px;
-  font-size: 28px;
+  padding: 18px;
+  font-size: 22px;
   font-family: 'Fredoka One', cursive;
   background: linear-gradient(135deg, #10b981 0%, #059669 100%);
   color: white;
   border: none;
-  border-radius: 20px;
+  border-radius: 15px;
   cursor: pointer;
-  box-shadow: 0 8px 20px rgba(16,185,129,0.4);
+  box-shadow: 0 6px 15px rgba(16,185,129,0.4);
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 15px;
-  border: 5px solid white;
+  gap: 12px;
+  border: 4px solid white;
 }
 
 .start-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 30px rgba(16,185,129,0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(16,185,129,0.5);
 }
 
 .start-button:active {
@@ -771,21 +771,21 @@ body {
 /* Guided Controls */
 .guided-controls {
   display: flex;
-  gap: 15px;
-  margin-top: 15px;
+  gap: 10px;
+  margin-top: 10px;
   justify-content: center;
 }
 
 .guided-btn, .reset-btn {
-  padding: 12px 24px;
-  font-size: 16px;
+  padding: 8px 18px;
+  font-size: 13px;
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
   border: none;
-  border-radius: 12px;
+  border-radius: 10px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
 }
 
 .guided-btn {
@@ -796,7 +796,7 @@ body {
 
 .guided-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(139,92,246,0.4);
+  box-shadow: 0 5px 14px rgba(139,92,246,0.4);
 }
 
 .reset-btn {
@@ -806,7 +806,7 @@ body {
 
 .reset-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(239,68,68,0.4);
+  box-shadow: 0 5px 14px rgba(239,68,68,0.4);
 }
 
 /* PDA Panel */
@@ -928,12 +928,12 @@ body {
   padding: 8px 12px !important;
   border-radius: 8px;
   transform: scale(1.3);
-  animation: pulseGlow 1s ease-in-out infinite !important;
+  animation: pulseGlow 0.8s ease-in-out infinite !important;
   font-weight: 900 !important;
   color: white !important;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-  box-shadow: 0 4px 12px rgba(239,68,68,0.6);
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  box-shadow: 0 4px 20px rgba(251,191,36,0.8);
 }
 
 .completed {
@@ -944,9 +944,13 @@ body {
 @keyframes pulseGlow {
   0%, 100% { 
     transform: scale(1.3);
+    box-shadow: 0 4px 20px rgba(251,191,36,0.8);
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
   }
   50% { 
-    transform: scale(1.35);
+    transform: scale(1.5);
+    box-shadow: 0 8px 35px rgba(251,191,36,1);
+    background: linear-gradient(135deg, #fef3c7 0%, #fbbf24 100%);
   }
 }
 
@@ -984,6 +988,123 @@ body {
 @keyframes highlight {
   0%, 100% { background: #ddd6fe; }
   50% { background: #c4b5fd; }
+}
+
+/* Result Modal */
+.result-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  backdrop-filter: blur(10px);
+}
+
+.result-modal.show {
+  display: flex;
+  animation: fadeIn 0.3s ease;
+}
+
+.result-content {
+  background: white;
+  border-radius: 30px;
+  padding: 60px 80px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  border: 8px solid;
+  animation: scaleIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.result-content.accepted {
+  border-color: #10b981;
+}
+
+.result-content.rejected {
+  border-color: #ef4444;
+}
+
+.result-icon {
+  font-size: 120px;
+  margin-bottom: 20px;
+  animation: bounceIn 0.6s ease 0.2s backwards;
+}
+
+.result-text {
+  font-family: 'Fredoka One', cursive;
+  font-size: 72px;
+  margin: 0 0 20px 0;
+  letter-spacing: 4px;
+}
+
+.result-text.accepted {
+  color: #10b981;
+  text-shadow: 4px 4px 0 rgba(16,185,129,0.2);
+}
+
+.result-text.rejected {
+  color: #ef4444;
+  text-shadow: 4px 4px 0 rgba(239,68,68,0.2);
+}
+
+.result-message {
+  font-size: 24px;
+  color: #6b7280;
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+
+.try-again-btn {
+  background: linear-gradient(135deg, #7c3aed 0%, #6b21a8 100%);
+  color: white;
+  border: none;
+  padding: 20px 50px;
+  font-size: 24px;
+  font-family: 'Fredoka One', cursive;
+  border-radius: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 0 auto;
+  box-shadow: 0 8px 20px rgba(124,58,237,0.4);
+  transition: all 0.3s ease;
+}
+
+.try-again-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(124,58,237,0.5);
+}
+
+.try-again-btn:active {
+  transform: translateY(0);
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes bounceIn {
+  from {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  to {
+    transform: scale(1);
+  }
 }
 
 /* Responsive */

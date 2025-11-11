@@ -4,6 +4,7 @@ import { ding, whoosh, error } from './audio.js';
 // Wait for DOM to be ready
 let scene, statusText, statusSub, addBtn, removeBtn, stackArea, count, sequenceDisplay, guidedBtn, resetBtn;
 let pdaPanel, closePdaPanel, pdaSteps;
+let resultModal, resultIcon, resultText, resultMessage, tryAgainBtn;
 
 // DOM Elements - Input Screen (available immediately)
 const inputScreen = document.getElementById('inputScreen');
@@ -41,6 +42,11 @@ function initMainScene() {
   pdaPanel = document.getElementById('pdaPanel');
   closePdaPanel = document.getElementById('closePdaPanel');
   pdaSteps = document.getElementById('pdaSteps');
+  resultModal = document.getElementById('resultModal');
+  resultIcon = document.getElementById('resultIcon');
+  resultText = document.getElementById('resultText');
+  resultMessage = document.getElementById('resultMessage');
+  tryAgainBtn = document.getElementById('tryAgainBtn');
   
   // Set up event listeners
   addBtn.addEventListener('click', addPassenger);
@@ -48,6 +54,10 @@ function initMainScene() {
   guidedBtn.addEventListener('click', startGuidedMode);
   resetBtn.addEventListener('click', resetRide);
   closePdaPanel.addEventListener('click', () => pdaPanel.classList.remove('active'));
+  tryAgainBtn.addEventListener('click', () => {
+    resultModal.classList.remove('show');
+    goBackToInput();
+  });
   
   sequenceDisplay.addEventListener('dblclick', () => {
     if (!isGuidedMode) {
@@ -94,6 +104,11 @@ startRideBtn.addEventListener('click', () => {
     sceneElem.style.animation = 'fadeIn 0.5s ease';
     initMainScene(); // Initialize after scene is visible
     ding();
+    
+    // Automatically start guided mode
+    setTimeout(() => {
+      startGuidedMode();
+    }, 500);
   }, 500);
 });
 
@@ -317,6 +332,11 @@ function checkFinalState() {
     currentStepIndex++;
     renderPDASteps();
     ding();
+    
+    // Show result modal
+    setTimeout(() => {
+      showResultModal(true);
+    }, 800);
   } else {
     logPDAStep(stepNum, 'qᵣ', 'ε', 'X', '❌ REJECT (Stack not empty)');
     statusText.textContent = '❌ REJECTED!';
@@ -324,10 +344,59 @@ function checkFinalState() {
     currentStepIndex++;
     renderPDASteps();
     error();
+    
+    // Show result modal
+    setTimeout(() => {
+      showResultModal(false);
+    }, 800);
   }
   
   isGuidedMode = false;
   guidedBtn.disabled = false;
+}
+
+// Show result modal
+function showResultModal(accepted) {
+  const content = resultModal.querySelector('.result-content');
+  
+  if (accepted) {
+    resultIcon.textContent = '✅';
+    resultText.textContent = 'ACCEPTED!';
+    resultText.className = 'result-text accepted';
+    resultMessage.textContent = 'Your input string is valid! The stack is empty.';
+    content.className = 'result-content accepted';
+  } else {
+    resultIcon.textContent = '❌';
+    resultText.textContent = 'REJECTED!';
+    resultText.className = 'result-text rejected';
+    resultMessage.textContent = 'Invalid input! The stack is not empty.';
+    content.className = 'result-content rejected';
+  }
+  
+  resultModal.classList.add('show');
+}
+
+// Go back to input screen
+function goBackToInput() {
+  // Reset everything
+  stackArea.innerHTML = '';
+  stack._data = [];
+  sequence = [];
+  pdaStepLog = [];
+  currentStepIndex = 0;
+  currentInputIndex = 0;
+  isGuidedMode = false;
+  pdaPanel.classList.remove('active');
+  
+  // Hide scene, show input screen
+  scene.style.animation = 'fadeOut 0.5s ease';
+  setTimeout(() => {
+    scene.style.display = 'none';
+    inputScreen.style.display = 'flex';
+    inputScreen.style.animation = 'fadeIn 0.5s ease';
+    pdaInput.value = '';
+    pdaInput.focus();
+  }, 500);
 }
 
 // Reset
