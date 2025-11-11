@@ -30,3 +30,27 @@ export function error(){
   g.gain.exponentialRampToValueAtTime(0.00001,t+0.35);
   o.stop(t+0.36);
 }
+export function success(){
+  lazy();
+  const notes = [523.25, 659.25, 783.99]; // C5, E5, G5 (major chord)
+  notes.forEach((freq, i) => {
+    const o=ctx.createOscillator(),g=ctx.createGain();
+    o.type="sine";o.frequency.value=freq;g.gain.value=0.001;
+    o.connect(g).connect(ctx.destination);o.start();
+    const t=ctx.currentTime + i * 0.15;
+    g.gain.exponentialRampToValueAtTime(0.12,t+0.01);
+    g.gain.exponentialRampToValueAtTime(0.00001,t+0.5);
+    o.stop(t+0.51);
+  });
+}
+export function reject(){
+  lazy();
+  const o=ctx.createOscillator(),g=ctx.createGain();
+  o.type="triangle";o.frequency.value=300;g.gain.value=0.08;
+  o.connect(g).connect(ctx.destination);o.start();
+  const t=ctx.currentTime;
+  o.frequency.linearRampToValueAtTime(250,t+0.1);
+  o.frequency.linearRampToValueAtTime(200,t+0.2);
+  g.gain.exponentialRampToValueAtTime(0.00001,t+0.6);
+  o.stop(t+0.61);
+}

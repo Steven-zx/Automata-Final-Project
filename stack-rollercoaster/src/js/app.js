@@ -1,5 +1,5 @@
 import { Stack } from './stack.js';
-import { ding, whoosh, error } from './audio.js';
+import { ding, whoosh, error, success, reject } from './audio.js';
 
 // Wait for DOM to be ready
 let scene, statusText, statusSub, addBtn, removeBtn, stackArea, count, sequenceDisplay, guidedBtn, resetBtn;
@@ -365,12 +365,14 @@ function showResultModal(accepted) {
     resultText.className = 'result-text accepted';
     resultMessage.textContent = 'Your input string is valid! The stack is empty.';
     content.className = 'result-content accepted';
+    success(); // Play success sound
   } else {
     resultIcon.textContent = '❌';
     resultText.textContent = 'REJECTED!';
     resultText.className = 'result-text rejected';
     resultMessage.textContent = 'Invalid input! The stack is not empty.';
     content.className = 'result-content rejected';
+    reject(); // Play reject sound
   }
   
   resultModal.classList.add('show');
@@ -378,7 +380,10 @@ function showResultModal(accepted) {
 
 // Go back to input screen
 function goBackToInput() {
-  // Reset everything
+  // Stop any ongoing animations
+  busy = false;
+  
+  // Reset all state variables
   stackArea.innerHTML = '';
   stack._data = [];
   sequence = [];
@@ -386,7 +391,16 @@ function goBackToInput() {
   currentStepIndex = 0;
   currentInputIndex = 0;
   isGuidedMode = false;
+  inputString = '';
+  
+  // Close PDA panel
   pdaPanel.classList.remove('active');
+  
+  // Re-enable buttons
+  if (addBtn) {
+    addBtn.disabled = false;
+    removeBtn.disabled = true;
+  }
   
   // Hide scene, show input screen
   scene.style.animation = 'fadeOut 0.5s ease';
@@ -402,6 +416,9 @@ function goBackToInput() {
 // Reset
 function resetRide() {
   if (busy) return;
+  
+  // Stop any ongoing operations
+  busy = false;
   
   // Clear stack visually
   stackArea.innerHTML = '';
