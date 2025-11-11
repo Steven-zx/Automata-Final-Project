@@ -8,7 +8,28 @@
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <div class="scene">
+  <!-- Input Screen (shown first) -->
+  <div id="inputScreen" class="input-screen">
+    <div class="input-container">
+      <div class="input-banner">
+        <div class="input-banner-bg"></div>
+        <h1 class="input-title">STACK COASTER</h1>
+        <div class="input-icon">🎢</div>
+      </div>
+      <div class="input-card">
+        <h2 class="input-subtitle">Enter Your PDA Input!</h2>
+        <p class="input-description">Type a string of <span class="highlight-a">a</span>'s and <span class="highlight-b">b</span>'s</p>
+        <input type="text" id="pdaInput" class="pda-input" placeholder="e.g. aabb, aaabbb" maxlength="20" />
+        <button id="startRide" class="start-button">
+          <span class="start-icon">🎟️</span>
+          <span class="start-text">START RIDE!</span>
+        </button>
+        <div class="input-hint">🎪 Example: "aabb" will push twice, then pop twice</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scene" style="display: none;">
     <!-- Rollercoaster Track Frame -->
     <div class="track-frame">
       <svg class="track-svg" viewBox="0 0 1400 900" preserveAspectRatio="none">
@@ -75,6 +96,10 @@
             <span id="count" class="cap-count">0</span><span class="cap-total">/5</span>
           </div>
         </div>
+        <div class="guided-controls">
+          <button id="guidedBtn" class="guided-btn">🎬 GUIDED MODE</button>
+          <button id="resetBtn" class="reset-btn">🔄 RESET</button>
+        </div>
       </div>
 
       <button id="removeBtn" class="panel-btn remove-button">
@@ -83,6 +108,32 @@
         </div>
         <div class="btn-label">Remove Passenger<br/><span class="btn-key">(b)</span></div>
       </button>
+    </div>
+
+    <!-- PDA Steps Panel -->
+    <div id="pdaPanel" class="pda-panel">
+      <div class="pda-header">
+        <h3>📋 PDA Transition Steps</h3>
+        <button id="closePdaPanel" class="close-panel">✖</button>
+      </div>
+      <div class="pda-table-container">
+        <table class="pda-table">
+          <thead>
+            <tr>
+              <th>Step</th>
+              <th>State</th>
+              <th>Input Left</th>
+              <th>Stack Top</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="pdaSteps">
+            <tr class="empty-state">
+              <td colspan="5">No steps yet. Start guided mode!</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <!-- Background Park Elements -->
